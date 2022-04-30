@@ -15,6 +15,7 @@ namespace TaxCalculator.Infrastructure.ValidationAttributes
             string fullName = value as string;
             List<string> names = fullName.Trim().Split(" ", System.StringSplitOptions.RemoveEmptyEntries).ToList();
             bool isValidFullName = names.All(x => Regex.IsMatch(x, _pattern));
+
             if (names.Count < 2 || !isValidFullName)
             {
                 return new ValidationResult(CommonValidations.InvalidFullName);

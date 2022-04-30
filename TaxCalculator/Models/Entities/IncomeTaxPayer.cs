@@ -5,7 +5,7 @@ namespace TaxCalculator.Models.Entities
 {
     public class IncomeTaxPayer : IIncomeTaxPayer
     {
-        public long SSN { get; set; }
+        public string SSN { get; set; }
         public string FullName { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public decimal GrossIncome { get; set; }
@@ -26,7 +26,7 @@ namespace TaxCalculator.Models.Entities
 
             IncomeTaxPayer other = (IncomeTaxPayer) obj;
 
-            bool areEqual =  SSN.Equals(other.SSN) 
+            bool areEqual =  SSN == other.SSN 
                 && FullName == other.FullName 
                 && DateOfBirth.Equals(other.DateOfBirth) 
                 && GrossIncome.Equals(other.GrossIncome) 

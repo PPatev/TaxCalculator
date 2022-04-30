@@ -11,6 +11,6 @@ namespace TaxCalculator.Infrastructure.Exceptions
             _message = message;
         }
 
-        public string Message => _message;
+        public override string Message => _message;
     }
 }

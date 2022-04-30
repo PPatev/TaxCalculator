@@ -20,6 +20,6 @@ namespace TaxCalculator.Infrastructure.Interfaces.Models.InputModels
         /// <summary>
         /// Social security number (Unique personal identifier).
         /// </summary>
-        long SSN { get; set; }
+        string SSN { get; set; }
     }
 }

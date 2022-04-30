@@ -20,7 +20,7 @@ namespace TaxCalculator.UnitTests.ValidationsTests
             _model = new TaxPayerInputModel();
             _model.DateOfBirth = DateTime.Now;
             _model.GrossIncome = 0;
-            _model.SSN = 123456789;
+            _model.SSN = "123456789";
             _model.CharitySpent = 0;
         }
 
@@ -29,9 +29,9 @@ namespace TaxCalculator.UnitTests.ValidationsTests
         {
             _model.FullName = "Peter";
 
-            List<ValidationResult> result = ValidateModel(_model);
+            List<ValidationResult> results = ValidateModel(_model);
 
-            Assert.IsTrue(result.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
+            Assert.IsTrue(results.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
         }
 
         [Test]
@@ -39,9 +39,9 @@ namespace TaxCalculator.UnitTests.ValidationsTests
         {
             _model.FullName = "Peter Patev2";
 
-            List<ValidationResult> result = ValidateModel(_model);
+            List<ValidationResult> results = ValidateModel(_model);
 
-            Assert.IsTrue(result.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
+            Assert.IsTrue(results.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
         }
 
         [Test]
@@ -49,9 +49,9 @@ namespace TaxCalculator.UnitTests.ValidationsTests
         {
             _model.FullName = "Pet@r Patev";
 
-            List<ValidationResult> result = ValidateModel(_model);
+            List<ValidationResult> results = ValidateModel(_model);
 
-            Assert.IsTrue(result.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
+            Assert.IsTrue(results.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
         }
 
         [Test]
@@ -59,9 +59,9 @@ namespace TaxCalculator.UnitTests.ValidationsTests
         {
             _model.FullName = @"Петър Патев";
 
-            List<ValidationResult> result = ValidateModel(_model);
+            List<ValidationResult> results = ValidateModel(_model);
 
-            Assert.IsTrue(result.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
+            Assert.IsTrue(results.Any(x => x.ErrorMessage.Equals(CommonValidations.InvalidFullName)));
         }
 
         [Test]
@@ -69,9 +69,9 @@ namespace TaxCalculator.UnitTests.ValidationsTests
         {
             _model.FullName = "Peter Patev";
 
-            List<ValidationResult> result = ValidateModel(_model);
+            List<ValidationResult> results = ValidateModel(_model);
 
-            Assert.That(result.Count, Is.EqualTo(0));
+            Assert.That(results.Count, Is.EqualTo(0));
         }
 
         private List<ValidationResult> ValidateModel(object model)
@@ -79,6 +79,7 @@ namespace TaxCalculator.UnitTests.ValidationsTests
             List<ValidationResult> validationResults = new List<ValidationResult>();
             ValidationContext validationContext = new ValidationContext(model, null, null);
             Validator.TryValidateObject(model, validationContext, validationResults, true);
+
             return validationResults;
         }
     }

@@ -61,7 +61,7 @@ namespace TaxCalculator.UnitTests.TaxServiceTests
             {
                 FullName = "Peter Patev",
                 DateOfBirth = DateTime.UtcNow,
-                SSN = 12345678,
+                SSN = "12345678",
                 GrossIncome = grossIncome,
                 CharitySpent = charitySpent
             };

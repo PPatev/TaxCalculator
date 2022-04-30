@@ -18,8 +18,8 @@ namespace TaxCalculator.Models.Dtos
         public decimal GrossIncome { get; set; }
 
         [Required]
-        [Range(10000, 9999999999)]
-        public long SSN { get; set; }
+        [IsValidSSN()]
+        public string SSN { get; set; }
 
         [NonNegativeDecimal()]
         public decimal? CharitySpent { get; set; }

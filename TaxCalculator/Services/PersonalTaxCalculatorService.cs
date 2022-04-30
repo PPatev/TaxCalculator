@@ -30,7 +30,7 @@ namespace TaxCalculator.Services
 
             IIncomeTaxPayer taxPayerData = new IncomeTaxPayer
             {
-                SSN = taxPayerCommand.SSN,
+                SSN = taxPayerCommand.SSN.Trim(),
                 FullName = taxPayerCommand.FullName,
                 DateOfBirth = taxPayerCommand.DateOfBirth,
                 GrossIncome = taxPayerCommand.GrossIncome,

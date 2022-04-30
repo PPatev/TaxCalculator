@@ -20,7 +20,7 @@ namespace TaxCalculator.UnitTests.ValidationsTests
             _model.FullName = "Peter Patev";
             _model.DateOfBirth = DateTime.Now;
             _model.GrossIncome = 0;
-            _model.SSN = 123456789;
+            _model.SSN = "123456789";
             _model.CharitySpent = 0;
         }
 
@@ -73,6 +73,7 @@ namespace TaxCalculator.UnitTests.ValidationsTests
             List<ValidationResult> validationResults = new List<ValidationResult>();
             ValidationContext validationContext = new ValidationContext(model, null, null);
             Validator.TryValidateObject(model, validationContext, validationResults, true);
+
             return validationResults;
         }
     }
